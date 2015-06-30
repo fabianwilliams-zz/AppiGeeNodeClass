@@ -69,6 +69,56 @@ paths:
         default:
           description: Error
           schema:
+            $ref: "#/definitions/ErrorResponse"
+  /restaurants/{id}:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: restaurants
+    x-a127-apply: {}
+    get:
+      description: Returns a single Restaurant to the caller
+      # used as the method name of the controller
+      operationId: getRestaurantsByID
+      parameters:
+        - name: id
+          in: path
+          description: The name of the individual restaurant you want to call
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+  /restaurants/{id}/reviews:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: restaurants
+    x-a127-apply: {}
+    get:
+      description: Returns a single Restaurant Reviews to the caller
+      # used as the method name of the controller
+      operationId: getReviews
+      parameters:
+        - name: id
+          in: path
+          description: The name of the individual restaurant you want to call
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
             $ref: "#/definitions/ErrorResponse"            
 # complex objects have schema definitions
 definitions:
